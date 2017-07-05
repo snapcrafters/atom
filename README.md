@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="https://avatars0.githubusercontent.com/u/1089146?v=3&s=200" alt="Atom">
   <br />
-  Discord
+  Atom
 </h1>
 
 <p align="center"> <b>This is the snap for Atom</b>, <i>"A hackable
@@ -64,10 +64,10 @@ If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft
 
 ## Upstream
 
-| [![Ian Olsen](http://gravatar.com/avatar/f2f358a3f3fe82f01ed3177486abd5e5?s=128)](https://github.com/iolsen) |
+| [![Ian Olsen](https://avatars0.githubusercontent.com/u/553742?v=3&s=128)](https://github.com/iolsen) |
 | :---: |
 | [Ian Olsen](https://github.com/iolsen) |
 
-| [![Lee Dohm](http://gravatar.com/avatar/c7a5e398bc386633cc01c27bb0059f0a?s=128)](https://github.com/lee-dohm) |
+| [![Lee Dohm](https://avatars3.githubusercontent.com/u/1038121?v=3&s=128)](https://github.com/lee-dohm) |
 | :---: |
 | [Lee Dohm](https://github.com/lee-dohm) |
