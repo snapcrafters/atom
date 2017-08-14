@@ -15,6 +15,7 @@ parts:
     source-type: deb
     # Correct path to icon.
     prepare: |
+      # atom.desktop for stable releases, atom-beta.desktop for betas
       sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom-beta.desktop
     after:
       - desktop-gtk2
@@ -35,5 +36,7 @@ parts:
 
 apps:
   atom:
-    command: bin/electron-launch classic ${SNAP}/usr/share/atom/atom
-    desktop: usr/share/applications/atom.desktop
+    # /atom/ for stable releases, /atom-beta/ for betas
+    command: bin/electron-launch classic ${SNAP}/usr/share/atom-beta/atom
+    # atom.desktop for releases, atom-beta.desktop for betas
+    desktop: usr/share/applications/atom-beta.desktop
