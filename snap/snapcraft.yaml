@@ -15,7 +15,7 @@ parts:
     source-type: deb
     # Correct path to icon.
     prepare: |
-      sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom.desktop
+      sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom-beta.desktop
     after:
       - desktop-gtk2
     stage-packages:
