@@ -16,8 +16,9 @@ if test "$1" = "classic"; then
             TRIPLET="$(uname -p)-linux-gnu"
             ;;
     esac
-
-    export LD_LIBRARY_PATH=$SNAP/usr/lib:$SNAP/usr/lib/$TRIPLET   
+   
+    export LD_LIBRARY_PATH=$SNAP/usr/lib:$SNAP/usr/lib/$TRIPLET
+    export LD_LIBRARY_PATH=$SNAP/lib:$SNAP/lib/$TRIPLET:$LD_LIBRARY_PATH
 fi
 
 # Correct the TMPDIR path for Chromium Framework/Electron to ensure
