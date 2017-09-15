@@ -24,6 +24,7 @@ parts:
       - libnotify4
       - libnspr4
       - libnss3
+      - libpcre3
       - libpulse0
       - libxss1
       - libxtst6
