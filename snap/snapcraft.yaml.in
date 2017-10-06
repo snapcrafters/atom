@@ -37,3 +37,5 @@ apps:
   atom:
     command: bin/electron-launch classic ${SNAP}/usr/share/atom/atom
     desktop: usr/share/applications/atom.desktop
+  apm:
+    command: usr/bin/apm
