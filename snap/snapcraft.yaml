@@ -1,5 +1,5 @@
 name: atom
-version: 1.20.1
+version: 1.21.0
 summary: A hackable text editor for the 21st Century.
 description: |
   Atom is a free and open source text editor that is modern,
@@ -11,7 +11,7 @@ confinement: classic
 parts:
   atom:
     plugin: dump
-    source: https://github.com/atom/atom/releases/download/v1.20.1/atom-amd64.deb
+    source: https://github.com/atom/atom/releases/download/v1.21.0/atom-amd64.deb
     source-type: deb
     # Correct path to icon.
     prepare: |
@@ -19,8 +19,9 @@ parts:
     after:
       - desktop-gtk2
     stage-packages:
-      - gconf2
+      - gvfs-bin
       - libasound2
+      - libgconf-2-4
       - libnotify4
       - libnspr4
       - libnss3
@@ -30,9 +31,7 @@ parts:
       - libxtst6
   electron-launch:
     plugin: dump
-    source: .
-    organize:
-      electron-launch: bin/electron-launch
+    source: files/
 
 apps:
   atom:

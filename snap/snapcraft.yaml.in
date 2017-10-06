@@ -19,8 +19,9 @@ parts:
     after:
       - desktop-gtk2
     stage-packages:
-      - gconf2
+      - gvfs-bin
       - libasound2
+      - libgconf-2-4
       - libnotify4
       - libnspr4
       - libnss3
@@ -30,9 +31,7 @@ parts:
       - libxtst6
   electron-launch:
     plugin: dump
-    source: .
-    organize:
-      electron-launch: bin/electron-launch
+    source: files/
 
 apps:
   atom:
