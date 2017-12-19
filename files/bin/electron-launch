@@ -1,24 +1,4 @@
 #!/bin/sh
 
-if test "$1" = "classic"; then
-    shift
-    case $SNAP_ARCH in
-        amd64)
-            TRIPLET="x86_64-linux-gnu"
-            ;;
-        armhf)
-            TRIPLET="arm-linux-gnueabihf"
-            ;;
-        arm64)
-            TRIPLET="aarch64-linux-gnu"
-            ;;
-        *)
-            TRIPLET="$(uname -p)-linux-gnu"
-            ;;
-    esac
-
-    export LD_LIBRARY_PATH=$SNAP/usr/lib:$SNAP/usr/lib/$TRIPLET:$LD_LIBRARY_PATH
-    export LD_LIBRARY_PATH=$SNAP/lib:$SNAP/lib/$TRIPLET:$LD_LIBRARY_PATH
-fi
-
-exec ${SNAP}/bin/desktop-launch $@
+[ -n "$XDG_RUNTIME_DIR" ] && mkdir -p $XDG_RUNTIME_DIR -m 700
+exec "$@" --executed-from="$(pwd)" --pid=$$ > /dev/null 2>&1 &
