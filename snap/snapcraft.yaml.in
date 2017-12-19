@@ -19,7 +19,6 @@ parts:
     after:
       - desktop-gtk2
     stage-packages:
-      - gvfs-bin
       - libasound2
       - libgconf-2-4
       - libnotify4
@@ -35,7 +34,7 @@ parts:
 
 apps:
   atom:
-    command: bin/electron-launch classic ${SNAP}/usr/share/atom/atom
+    command: bin/electron-launch ${SNAP}/usr/share/atom/atom
     desktop: usr/share/applications/atom.desktop
   apm:
     command: usr/bin/apm
