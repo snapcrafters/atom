@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case "$@" in
+  *bin/apm*)
+    exec "$@" --executed-from="$(pwd)" --pid=$$
+    ;;
+  *)
+    exec "$@" --executed-from="$(pwd)" --pid=$$ > /dev/null 2>&1 &
+    ;;
+esac
+

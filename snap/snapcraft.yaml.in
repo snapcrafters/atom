@@ -28,13 +28,13 @@ parts:
       - libpulse0
       - libxss1
       - libxtst6
-  electron-launch:
+  launcher:
     plugin: dump
     source: files/
 
 apps:
   atom:
-    command: bin/electron-launch ${SNAP}/usr/share/atom/atom
+    command: bin/launcher ${SNAP}/usr/share/atom/atom
     desktop: usr/share/applications/atom.desktop
   apm:
-    command: bin/electron-launch ${SNAP}/usr/bin/apm
+    command: bin/launcher ${SNAP}/usr/bin/apm
