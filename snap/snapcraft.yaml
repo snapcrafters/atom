@@ -24,6 +24,8 @@ parts:
       sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom.desktop
     after:
       - desktop-gtk2
+    build-packages:
+      - curl
     stage-packages:
       - libasound2
       - libgconf-2-4
