@@ -22,13 +22,14 @@ parts:
     # Correct path to icon.
     prepare: |
       sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom.desktop
-    after:
-      - desktop-gtk2
     build-packages:
       - curl
     stage-packages:
+      - libappindicator1
       - libasound2
-      - libgconf-2-4
+      - libcurl3-gnutls
+      - libgconf2-4
+      - libgtk2.0-0
       - libnotify4
       - libnspr4
       - libnss3
@@ -39,6 +40,8 @@ parts:
   launcher:
     plugin: dump
     source: files/
+    prepare: |
+      chmod +x bin/launcher
 
 apps:
   atom:
