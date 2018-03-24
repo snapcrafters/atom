@@ -28,7 +28,7 @@ parts:
       - libappindicator1
       - libasound2
       - libcurl3-gnutls
-      - libgconf2-4
+      - libgconf-2-4
       - libgtk2.0-0
       - libnotify4
       - libnspr4
