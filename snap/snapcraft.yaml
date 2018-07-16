@@ -23,7 +23,11 @@ parts:
     prepare: |
       sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom.desktop
     build-packages:
-      - curl
+      # Atom debs are only available for amd64.
+      # Fail builds on other architectures
+      - on amd64:
+        - curl
+      - else fail
     stage-packages:
       - libappindicator3-1
       - libasound2
