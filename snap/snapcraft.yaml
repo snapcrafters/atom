@@ -61,5 +61,9 @@ apps:
   atom:
     command: bin/launcher ${SNAP}/usr/share/atom/atom
     desktop: usr/share/applications/atom.desktop
+    environment:
+      # Fallback to XWayland if running in a Wayland session.
+      DISABLE_WAYLAND: 1
+
   apm:
     command: bin/launcher ${SNAP}/usr/bin/apm
