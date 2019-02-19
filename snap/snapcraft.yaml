@@ -28,6 +28,7 @@ parts:
     build-packages:
       - curl
     stage-packages:
+      - fcitx-frontend-gtk3
       - libappindicator3-1
       - libasound2
       - libcurl3-gnutls
@@ -50,5 +51,9 @@ apps:
   atom:
     command: bin/launcher ${SNAP}/usr/share/atom/atom
     desktop: usr/share/applications/atom.desktop
+    environment:
+      # Fallback to XWayland if running in a Wayland session.
+      DISABLE_WAYLAND: 1
+
   apm:
     command: bin/launcher ${SNAP}/usr/bin/apm
