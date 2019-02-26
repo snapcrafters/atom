@@ -35,7 +35,11 @@ parts:
       VERSION=$(echo "${DEB_URL}" | cut -d'/' -f4 | tr -d 'v')
       echo $VERSION > $SNAPCRAFT_STAGE/version
       snapcraftctl build
+      pwd
+      ls -l usr/share/applications
+      grep Icon usr/share/applications/atom.desktop
       sed -i 's|Icon=atom|Icon=/usr/share/pixmaps/atom\.png|g' usr/share/applications/atom.desktop
+      grep Icon usr/share/applications/atom.desktop
     build-packages:
       - curl
     stage-packages:
