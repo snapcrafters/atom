@@ -29,6 +29,7 @@ parts:
     source: https://atom.io/download/deb
     source-type: deb
     override-build: |
+      set -x 
       DEB_API="https://atom.io/download/deb"
       DEB_URL=$(curl -w "%{url_effective}\n" -I -L -s -S "${DEB_API}" -o /dev/null)
       VERSION=$(echo "${DEB_URL}" | cut -d'/' -f4 | tr -d 'v')
