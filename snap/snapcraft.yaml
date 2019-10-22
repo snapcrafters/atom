@@ -13,6 +13,9 @@ architectures:
   - build-on: amd64
 
 parts:
+  bsi-trigger: # A non-built part, only used to trigger builds in build.snapcraft.io on upstream changes
+    plugin: nil
+    source: https://github.com/atom/atom.git
   gnome:
     plugin: nil
     build-packages:
