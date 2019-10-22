@@ -63,7 +63,8 @@ parts:
   launcher:
     plugin: dump
     source: files/
-    prepare: |
+    override-build: |
+      snapcraftctl build
       chmod +x bin/launcher
 
 apps:
