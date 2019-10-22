@@ -5,6 +5,7 @@ summary: A hackable text editor for the 21st Century.
 description: |
   Atom is a free and open source text editor that is modern,
   approachable, and hackable to the core.
+base: core18
 
 grade: stable
 confinement: classic
