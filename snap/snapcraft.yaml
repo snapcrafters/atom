@@ -17,18 +17,33 @@ parts:
   bsi-trigger: # A non-built part, only used to trigger builds in build.snapcraft.io on upstream changes
     plugin: nil
     source: https://github.com/atom/atom.git
-  gnome:
+  libappindicator:
+    after:
+      - desktop-gnome-platform
     plugin: nil
+    stage-packages:
+      - libappindicator3-1
+    prime:
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libdbusmenu*.so*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libappindicator*.so*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libindicator*.so*
+
+  desktop-gnome-platform:
     build-packages:
-      - software-properties-common
-    override-pull: |
-      add-apt-repository -y ppa:ubuntu-desktop/gnome-3-28
-      apt -y update
-      apt -y upgrade
+    - build-essential
+    - libgtk-3-dev
+    make-parameters:
+    - FLAVOR=gtk3
+    override-build: |
+      snapcraftctl build
+      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
+    plugin: make
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
 
   atom:
     after:
-      - gnome
+      - desktop-gnome-platform
     plugin: dump
     source: https://atom.io/download/deb
     source-type: deb
