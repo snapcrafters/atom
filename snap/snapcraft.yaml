@@ -5,6 +5,7 @@ summary: A hackable text editor for the 21st Century.
 description: |
   Atom is a free and open source text editor that is modern,
   approachable, and hackable to the core.
+base: core
 
 grade: stable
 confinement: classic
@@ -40,13 +41,15 @@ parts:
       grep Icon $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
       sed -i 's|Icon=atom|Icon=${SNAP}/usr/share/pixmaps/atom\.png|g' $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
       grep Icon $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
+    prime:
+      - -usr/share/atom/chrome-sandbox
     build-packages:
       - curl
     stage-packages:
       - fcitx-frontend-gtk3
       - libappindicator3-1
       - libasound2
-      - libcurl3-gnutls
+      - libcurl3
       - libgconf-2-4
       - libgtk-3-0
       - libnotify4
@@ -55,12 +58,15 @@ parts:
       - libpcre3
       - libpulse0
       - libxss1
+      - libsecret-1-0
       - libxtst6
+      - libxkbfile1
   launcher:
     plugin: dump
     source: files/
-    prepare: |
-      chmod +x bin/launcher
+    override-build: |
+      snapcraftctl build
+      chmod +x $SNAPCRAFT_PART_INSTALL/bin/launcher
 
 apps:
   atom:
