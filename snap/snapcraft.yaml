@@ -30,17 +30,12 @@ parts:
     source: https://atom.io/download/deb
     source-type: deb
     override-build: |
-      set -x 
       DEB_API="https://atom.io/download/deb"
       DEB_URL=$(curl -w "%{url_effective}\n" -I -L -s -S "${DEB_API}" -o /dev/null)
       VERSION=$(echo "${DEB_URL}" | cut -d'/' -f4 | tr -d 'v')
       echo $VERSION > $SNAPCRAFT_STAGE/version
       snapcraftctl build
-      pwd
-      ls -l usr/share/applications
-      grep Icon $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
       sed -i 's|Icon=atom|Icon=${SNAP}/usr/share/pixmaps/atom\.png|g' $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
-      grep Icon $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
     prime:
       - -usr/share/atom/chrome-sandbox
     build-packages:
@@ -71,10 +66,8 @@ parts:
 apps:
   atom:
     command: bin/launcher ${SNAP}/usr/share/atom/atom
-    desktop: usr/share/applications/atom.desktop
     environment:
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
-
   apm:
     command: bin/launcher ${SNAP}/usr/bin/apm
