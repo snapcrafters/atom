@@ -1,7 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 # Create $XDG_RUNTIME_DIR if it doesn't exist
-[ -n "$XDG_RUNTIME_DIR" ] && mkdir -p $XDG_RUNTIME_DIR -m 700
+if [ ! -d "$XDG_RUNTIME_DIR" ]; then
+	mkdir -p $XDG_RUNTIME_DIR -m 700
+fi
+
+# If we launched from a desktop file, likely this is set, so we need to 
+# set ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT which we removed from
+# the desktop file
+if [ ! -z "$BAMF_DESKTOP_FILE_HINT"]; then
+	export ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false
+fi
 
 case "$@" in
   *bin/apm*)
