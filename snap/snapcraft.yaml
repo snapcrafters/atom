@@ -1,11 +1,10 @@
 name: atom
-version: latest
-version-script: cat $SNAPCRAFT_STAGE/version
+adopt-info: atom
 summary: A hackable text editor for the 21st Century.
 description: |
   Atom is a free and open source text editor that is modern,
   approachable, and hackable to the core.
-base: core
+base: core20
 
 grade: stable
 confinement: classic
@@ -14,18 +13,7 @@ architectures:
   - build-on: amd64
 
 parts:
-  gnome:
-    plugin: nil
-    build-packages:
-      - software-properties-common
-    override-pull: |
-      add-apt-repository -y ppa:ubuntu-desktop/gnome-3-26
-      apt -y update
-      apt -y upgrade
-
   atom:
-    after:
-      - gnome
     plugin: dump
     source: https://atom.io/download/deb
     source-type: deb
@@ -36,6 +24,7 @@ parts:
       echo $VERSION > $SNAPCRAFT_STAGE/version
       snapcraftctl build
       sed -i 's|Icon=atom|Icon=${SNAP}/usr/share/pixmaps/atom\.png|g' $SNAPCRAFT_PART_INSTALL/usr/share/applications/atom.desktop
+      snapcraftctl set-version "$(cat $SNAPCRAFT_STAGE/version)"
     prime:
       - -usr/share/atom/chrome-sandbox
     build-packages:
@@ -44,7 +33,7 @@ parts:
       - fcitx-frontend-gtk3
       - libappindicator3-1
       - libasound2
-      - libcurl3
+      - libcurl4
       - libgconf-2-4
       - libgtk-3-0
       - libnotify4
@@ -65,9 +54,13 @@ parts:
 
 apps:
   atom:
-    command: bin/launcher ${SNAP}/usr/share/atom/atom
+    command-chain: 
+      - bin/launcher
+    command: usr/share/atom/atom
     environment:
       # Fallback to XWayland if running in a Wayland session.
       DISABLE_WAYLAND: 1
   apm:
-    command: bin/launcher ${SNAP}/usr/bin/apm
+    command-chain: 
+      - bin/launcher
+    command: usr/bin/apm
