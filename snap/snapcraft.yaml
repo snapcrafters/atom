@@ -45,6 +45,7 @@ parts:
       - libsecret-1-0
       - libxtst6
       - libxkbfile1
+      - libstdc++6
   launcher:
     plugin: dump
     source: files/
