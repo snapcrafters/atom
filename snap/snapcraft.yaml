@@ -8,7 +8,7 @@ base: core20
 
 grade: stable
 confinement: classic
-
+compression: lzo
 architectures:
   - build-on: amd64
 
