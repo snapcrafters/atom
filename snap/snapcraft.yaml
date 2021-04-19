@@ -91,7 +91,6 @@ parts:
       - libdrm2
       - libgbm1
       - libxcb-dri3-0
-      - libstdc++6
   launcher:
     plugin: dump
     source: files/
